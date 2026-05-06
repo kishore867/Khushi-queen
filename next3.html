@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Love Question 💜</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Dancing+Script:wght@700&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+
+<style>
+
+html{
+font-size:16px;
+-webkit-text-size-adjust:100%;
+}
+
+body{
+margin:0;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+overflow:hidden;
+
+/* 💜 welcome theme */
+background:radial-gradient(circle,#12071d,#1b0a2a,#3b185f,#0b0614);
+
+font-family:'Poppins',sans-serif;
+opacity:0;
+transition:opacity 0.6s ease;
+}
+
+body.loaded{opacity:1;}
+body.fade-out{opacity:0;}
+
+/* BACK BUTTON */
+.back-btn{
+position:fixed;
+top:15px;
+left:15px;
+z-index:999;
+padding:10px 16px;
+border-radius:18px;
+text-decoration:none;
+font-weight:600;
+color:white;
+background:linear-gradient(135deg,#ff4fa3,#8e6cff);
+box-shadow:0 4px 12px rgba(0,0,0,0.3);
+transition:0.3s;
+}
+
+.back-btn:hover{
+transform:scale(1.08);
+}
+
+/* GLOW */
+.glow{
+position:absolute;
+width:260px;
+height:260px;
+border-radius:50%;
+filter:blur(80px);
+opacity:0.25;
+}
+
+.g1{background:#ff4fa3;top:-100px;left:-100px;}
+.g2{background:#8e6cff;bottom:-100px;right:-100px;}
+
+/* CARD */
+.card{
+background:rgba(255,255,255,0.08);
+padding:35px;
+width:300px;
+border-radius:28px;
+text-align:center;
+color:white;
+backdrop-filter:blur(10px);
+box-shadow:0 0 30px rgba(255,105,180,0.25);
+border:1px solid rgba(255,255,255,0.08);
+
+opacity:0;
+transform:translateY(30px);
+animation:cardIn 0.8s ease forwards;
+}
+
+@keyframes cardIn{
+to{opacity:1;transform:translateY(0);}
+}
+
+/* 💖 TITLE (more cute font) */
+h2{
+font-family:'Great Vibes',cursive;
+font-size:44px;
+margin-bottom:8px;
+color:#ffd6f6;
+text-shadow:0 0 18px rgba(255,105,180,0.6);
+}
+
+/* 💬 TEXT (cuter love tone) */
+.sub{
+font-family:'Dancing Script',cursive;
+font-size:20px;
+color:#fbcfe8;
+margin-bottom:20px;
+text-shadow:0 0 12px rgba(236,72,153,0.5);
+}
+
+/* BUTTONS */
+button{
+padding:12px 24px;
+margin:8px;
+border:none;
+border-radius:25px;
+font-size:15px;
+cursor:pointer;
+transition:0.25s;
+}
+
+.ok{
+background:linear-gradient(45deg,#9333ea,#c084fc);
+color:white;
+box-shadow:0 0 15px rgba(168,85,247,0.4);
+}
+
+.no{
+background:transparent;
+color:#fbcfe8;
+border:1px solid #c084fc;
+}
+
+button:hover{
+transform:scale(1.08);
+}
+
+/* HEARTS */
+.heart{
+position:absolute;
+font-size:14px;
+opacity:0.7;
+animation:floatUp 6s linear infinite;
+}
+
+@keyframes floatUp{
+0%{transform:translateY(0);opacity:0;}
+20%{opacity:1;}
+100%{transform:translateY(-100vh);opacity:0;}
+}
+
+/* MOBILE */
+@media(max-width:600px){
+.card{width:90%;padding:25px;}
+h2{font-size:36px;}
+.sub{font-size:18px;}
+}
+
+</style>
+</head>
+
+<body>
+
+<a class="back-btn" href="javascript:history.back()">💖 Go Back</a>
+
+<div class="glow g1"></div>
+<div class="glow g2"></div>
+
+<div class="card">
+
+<h2>Khushi can you Love me💜</h2>
+
+<div class="sub">
+You are the most beautiful feeling in my heart 🥺💖<br>
+I smile just thinking about you ✨💞my little heart chooses you always 🥺🫶
+</div>
+
+<button class="ok" onclick="goOk()">Okay 💜</button>
+<button class="no" onclick="goNo()">No 😢</button>
+
+</div>
+
+<script>
+
+/* load */
+window.addEventListener("load",()=>{
+document.body.classList.add("loaded");
+});
+
+/* navigation */
+function goTo(url){
+document.body.classList.add("fade-out");
+setTimeout(()=>{ window.location.href=url; },500);
+}
+
+function goOk(){ goTo("okay.html"); }
+function goNo(){ goTo("sorry.html"); }
+
+/* hearts */
+const emojis=["💖","💗","💜","💞","🦋","✨"];
+
+function createHeart(){
+const h=document.createElement("div");
+h.className="heart";
+h.innerHTML=emojis[Math.floor(Math.random()*emojis.length)];
+h.style.left=Math.random()*100+"vw";
+h.style.fontSize=(12+Math.random()*10)+"px";
+h.style.animationDuration=(4+Math.random()*3)+"s";
+
+document.body.appendChild(h);
+setTimeout(()=>h.remove(),7000);
+}
+
+setInterval(createHeart,1200);
+
+</script>
+
+</body>
+</html>

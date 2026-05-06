@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sorry Khushi 🥺</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Dancing+Script:wght@700&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+
+<style>
+
+/* ⭐ GITHUB TEXT FIX */
+html{
+font-size:16px;
+-webkit-text-size-adjust:100%;
+-ms-text-size-adjust:100%;
+}
+
+body{
+font-size:16px;
+}
+
+/* base */
+body{
+margin:0;
+padding:20px;
+background:linear-gradient(135deg,#140b22,#2a1240,#4b1d67);
+color:white;
+font-family:'Poppins',sans-serif;
+overflow-y:auto;
+text-align:center;
+}
+
+/* ⭐ GO BACK BUTTON */
+.back-btn{
+position:fixed;
+top:15px;
+left:15px;
+z-index:999;
+padding:10px 16px;
+border-radius:18px;
+text-decoration:none;
+font-weight:600;
+color:white;
+background:linear-gradient(135deg,#ff4fa3,#8e6cff);
+box-shadow:0 4px 12px rgba(0,0,0,0.3);
+font-family:'Poppins',sans-serif;
+transition:0.3s;
+}
+
+.back-btn:hover{
+transform:scale(1.08);
+}
+
+/* title */
+h1{
+font-family:'Great Vibes',cursive;
+font-size:50px;
+margin-bottom:25px;
+color:#f5d0fe;
+text-shadow:0 0 15px rgba(236,72,153,0.6);
+}
+
+/* container */
+#container{
+display:flex;
+flex-direction:column;
+align-items:center;
+}
+
+/* message */
+.msg{
+margin:6px 0;
+font-size:16px;
+opacity:0;
+transform:translateY(10px);
+animation:fade 0.6s ease forwards;
+will-change: transform;
+}
+
+@keyframes fade{
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+/* ⭐ MOBILE FIX */
+@media (max-width:600px){
+h1{
+font-size:38px;
+}
+.msg{
+font-size:14px;
+}
+body{
+padding:15px;
+}
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ⭐ GO BACK BUTTON -->
+<a class="back-btn" href="javascript:history.back()">💖 Go Back</a>
+
+<h1>Sorry Khushi 🥺💔</h1>
+
+<div id="container"></div>
+
+<script>
+
+const container = document.getElementById("container");
+
+const fonts = ["Great Vibes","Dancing Script","Poppins"];
+
+let total = 300;
+let batch = 10;
+let count = 1;
+
+function addBatch(){
+
+let fragment = document.createDocumentFragment();
+
+for(let i=0;i<batch && count<=total;i++,count++){
+
+let div = document.createElement("div");
+div.className="msg";
+
+div.innerHTML = `#${count} Sorry Khushi 🥺 - I love you 💜`;
+
+div.style.fontFamily = fonts[Math.floor(Math.random()*fonts.length)];
+div.style.fontSize = (14 + Math.random()*6) + "px";
+div.style.color = `hsl(${280 + Math.random()*60},70%,80%)`;
+
+fragment.appendChild(div);
+}
+
+container.appendChild(fragment);
+
+if(count <= total){
+setTimeout(addBatch, 50);
+}
+}
+
+addBatch();
+
+</script>
+
+<script>
+window.addEventListener("pageshow", function () {
+document.body.style.opacity = "1";
+document.body.style.visibility = "visible";
+});
+
+<script>
+function resetUI(){
+document.body.classList.remove("fade-out");
+document.body.style.opacity = "1";
+document.body.style.visibility = "visible";
+document.body.style.pointerEvents = "auto";
+document.body.style.filter = "none";
+
+/* restart animations properly */
+document.querySelectorAll("*").forEach(el=>{
+el.style.animationPlayState = "running";
+});
+}
+
+/* runs when page comes back (MOST IMPORTANT) */
+window.addEventListener("pageshow", resetUI);
+window.addEventListener("load", resetUI);
+
+/* safety heartbeat (prevents freeze) */
+setInterval(resetUI, 3000);
+
+<script>
+function initPage(){
+/* reset visual state */
+document.body.classList.remove("fade-out");
+document.body.style.opacity = "1";
+document.body.style.visibility = "visible";
+document.body.style.pointerEvents = "auto";
+document.body.style.filter = "none";
+
+/* restart animations safely */
+document.querySelectorAll("*").forEach(el=>{
+el.style.animationPlayState = "running";
+});
+}
+
+/* GitHub Pages BACK FIX (MOST IMPORTANT) */
+window.addEventListener("pageshow", initPage);
+
+/* normal load */
+window.addEventListener("load", initPage);
+</script>
+</script>
+
+</script>
+</body>
+</html>

@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Khushi 💖</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Quicksand:wght@400;600&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+
+<style>
+
+html{
+font-size:16px;
+-webkit-text-size-adjust:100%;
+}
+
+body{
+margin:0;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+overflow:hidden;
+background: radial-gradient(circle at top,#2b0a3d,#12071d,#0b0614);
+font-family:'Quicksand',sans-serif;
+opacity:0;
+transition:opacity 0.6s ease;
+}
+
+body.loaded{opacity:1;}
+
+/* CARD */
+.card{
+background:rgba(255,255,255,0.07);
+border:1px solid rgba(255,105,180,0.2);
+backdrop-filter:blur(8px);
+padding:30px;
+border-radius:25px;
+text-align:center;
+color:#fff;
+width:300px;
+z-index:2;
+}
+
+h1{
+font-family:'Great Vibes',cursive;
+font-size:34px;
+color:#ffb6d5;
+margin:0;
+}
+
+.msg{
+margin-top:10px;
+font-size:16px;
+color:#ffd1dc;
+line-height:1.6;
+font-family:'Dancing Script',cursive;
+}
+
+.btn{
+margin:10px;
+padding:10px 18px;
+border:none;
+border-radius:30px;
+cursor:pointer;
+font-size:15px;
+font-family:'Dancing Script',cursive;
+}
+
+.yes{
+background:linear-gradient(45deg,#ff4d88,#ff85a2);
+color:white;
+}
+
+.no{
+background:transparent;
+color:#ffb6d5;
+border:1px solid #ff85a2;
+}
+
+#result{
+margin-top:12px;
+font-size:15px;
+color:#ffc1d6;
+min-height:20px;
+}
+
+/* HEART */
+.heart{
+position:fixed;
+font-size:20px;
+animation:fall 1.6s linear forwards;
+pointer-events:none;
+z-index:9999;
+}
+
+@keyframes fall{
+0%{transform:translateY(0) scale(0.2);opacity:0;}
+10%{opacity:1;}
+100%{transform:translateY(-120vh) scale(2.2);opacity:0;}
+}
+
+/* HEARTBEAT */
+.heartbeat{
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+font-size:160px;
+animation:pulse 1s ease-in-out 2;
+z-index:10000;
+}
+
+@keyframes pulse{
+0%{transform:translate(-50%,-50%) scale(0.4);opacity:0;}
+30%{opacity:1;}
+50%{transform:translate(-50%,-50%) scale(1.6);}
+100%{transform:translate(-50%,-50%) scale(0.6);opacity:0;}
+}
+
+/* FLASH */
+.flash{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:white;
+opacity:0;
+z-index:9998;
+animation:flashAnim 0.6s ease;
+}
+
+@keyframes flashAnim{
+0%{opacity:0;}
+30%{opacity:0.8;}
+100%{opacity:0;}
+}
+
+/* IMAGE PAGE */
+.imagePage{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+display:none;
+z-index:99999;
+}
+
+.imagePage img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+.imageText{
+position:absolute;
+top:20px;
+left:20px;
+font-family:'Great Vibes',cursive;
+font-size:28px;
+color:white;
+text-shadow:0 0 10px hotpink;
+}
+
+/* ⭐ ADDED BOTTOM TEXT (FIXED POSITION) */
+.bottomText{
+position:absolute;
+bottom:90px;
+left:50%;
+transform:translateX(-50%);
+font-family:'Dancing Script',cursive;
+font-size:16px;
+color:#ffd1dc;
+text-shadow:0 0 10px hotpink;
+}
+
+/* ⭐ THE END BUTTON (ADDED BACK) */
+.endBtn{
+position:absolute;
+bottom:30px;
+right:20px;
+padding:10px 18px;
+border:none;
+border-radius:20px;
+background:linear-gradient(135deg,#ff4fa3,#8e6cff);
+color:white;
+font-family:'Dancing Script',cursive;
+font-size:18px;
+cursor:pointer;
+}
+
+/* END PAGE */
+.endPage{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+display:none;
+background:radial-gradient(circle,#2b0a3d,#12071d,#000);
+color:white;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+text-align:center;
+z-index:999999;
+}
+
+.endPage h1{
+font-family:'Great Vibes',cursive;
+font-size:42px;
+}
+
+.endPage p{
+font-size:18px;
+color:#ffd1dc;
+font-family:'Dancing Script',cursive;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<h1>Khushi 💖</h1>
+
+<div class="msg">I love you 🥺💗</div>
+
+<button class="btn yes" onclick="loveYes()">I love you too 💕</button>
+<button class="btn no" onclick="loveNo()">I can't 😔</button>
+
+<div id="result"></div>
+
+</div>
+
+<!-- IMAGE PAGE -->
+<div class="imagePage" id="imgPage">
+<img src="image.jpg">
+
+<div class="imageText">My love, you light up my heart 💖</div>
+
+<!-- ⭐ ADDED -->
+<div class="bottomText">Khushi you are my peace, you are my happiness, You are my everything 💞</div>
+
+<button class="endBtn" onclick="endNow()">The End 💞</button>
+
+</div>
+
+<!-- END PAGE -->
+<div class="endPage" id="endPage">
+<h1>The End 💖</h1>
+<p>message me Khushi 🥺</p>
+</div>
+
+<script>
+
+window.addEventListener("load",()=>{
+document.body.classList.add("loaded");
+});
+
+/* HEART */
+function createHeart(){
+const h=document.createElement("div");
+h.className="heart";
+h.innerText="💖";
+h.style.left=Math.random()*100+"vw";
+document.body.appendChild(h);
+setTimeout(()=>h.remove(),2000);
+}
+
+/* YES */
+function loveYes(){
+
+document.getElementById("result").innerText="I love you forever 💖✨";
+
+let flash=document.createElement("div");
+flash.className="flash";
+document.body.appendChild(flash);
+setTimeout(()=>flash.remove(),600);
+
+let hb=document.createElement("div");
+hb.className="heartbeat";
+hb.innerText="💓";
+document.body.appendChild(hb);
+setTimeout(()=>hb.remove(),2000);
+
+for(let i=0;i<120;i++){
+setTimeout(()=>createHeart(),i*10);
+}
+
+setTimeout(()=>{
+document.querySelector(".card").style.display="none";
+document.getElementById("imgPage").style.display="block";
+},1500);
+
+}
+
+/* NO */
+function loveNo(){
+
+document.getElementById("result").innerText="It's okay… But i still you 💔🥺";
+
+let hb=document.createElement("div");
+hb.className="heartbeat";
+hb.innerText="💔";
+document.body.appendChild(hb);
+setTimeout(()=>hb.remove(),2000);
+}
+
+/* ⭐ END BUTTON ACTION */
+function endNow(){
+document.getElementById("imgPage").style.display="none";
+document.getElementById("endPage").style.display="flex";
+}
+
+</script>
+
+</body>
+</html>
